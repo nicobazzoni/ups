@@ -27,7 +27,7 @@ const TabNavigator = () => {
 
     return (
         <Tab.Navigator screenOptions={({ route }) => ({  
-            tabBarActiveTintColor: 'tomato',
+            tabBarActiveTintColor: '#59C1CC',
             tabBarInactiveTintColor: 'gray',
             tabBarIcon: ({ focused, color, size }) => { 
                 if (route.name === 'Customers') {
@@ -35,7 +35,7 @@ const TabNavigator = () => {
                     <Icon 
                     name="users" 
                     type="entypo"
-                    color={ focused ? 'tomato' : 'gray'}
+                    color={ focused ? '#59C1CC' : 'gray'}
                      />
                   )
                 
