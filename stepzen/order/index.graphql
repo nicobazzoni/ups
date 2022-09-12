@@ -1,0 +1,32 @@
+
+type Order {
+  carrier: String
+  createdAt: Date
+  shippingCost: Int
+  trackingId: String
+  Address: String
+  City: String
+  Lat: Float
+  Log: Float
+  trackingItems: TrackingItems
+  @materializer(
+    query: "getTrackingItemsById"
+    arguments: [
+      { name: "id", field: "trackingId" } 
+    ]
+  )
+}
+
+type OrderList {
+  name: ID
+  value: Order
+
+}
+
+type Query {
+ 
+  getOrders: [OrderList]
+    @rest(
+      endpoint: "https://ups-typescript-expo-default-rtdb.firebaseio.com/orders.json"
+    )
+}
