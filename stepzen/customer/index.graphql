@@ -11,7 +11,7 @@ type CustomerList {
 
 type Query {
 
-  getCustomersById(id: ID!): Customer
+  getCustomerById(id: ID!): Customer
   @rest(
     endpoint: "https://ups-typescript-expo-default-rtdb.firebaseio.com/customers/$id.json"
   )
@@ -19,6 +19,6 @@ type Query {
   getCustomers:[CustomerList]
     @rest(
       endpoint: "https://ups-typescript-expo-default-rtdb.firebaseio.com/customers.json"
-      transforms: [{ pathpattern: [], editor: "objectToArray"} ]
+      transforms: [{ pathpattern: [], editor: "objectToArray" } ]
     )
 }
