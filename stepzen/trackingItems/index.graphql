@@ -10,9 +10,23 @@ type TrackingItems {
 
 }
 
+type TrackingItemsList {
+  name: ID
+  value: TrackingItems
+}
+
+
+
 type Query {
-  getTrackingItemsById(id: ID!): TrackingItems
+  getTrackingItemById(id: ID!): TrackingItems
     @rest( 
       endpoint: "https://ups-typescript-expo-default-rtdb.firebaseio.com/trackingItems/$id.json"
+      # transforms: [{ pathpattern: [], editor: "objectToArray"} ]
+    )
+
+    getTrackingItems: [TrackingItemsList] 
+    @rest( 
+      endpoint: "https://ups-typescript-expo-default-rtdb.firebaseio.com/trackingItems.json"
+      transforms: [{ pathpattern: [], editor: "objectToArray"} ]
     )
 }

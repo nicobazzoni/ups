@@ -8,12 +8,10 @@ type Order {
   City: String
   Lat: Float
   Log: Float
-  trackingItems: TrackingItems
+  trackingItems: TrackingItems 
   @materializer(
-    query: "getTrackingItemsById"
-    arguments: [
-      { name: "id", field: "trackingId" } 
-    ]
+    query: "getTrackingItemById"
+    arguments: [{ name: "id", field: "trackingId" }]
   )
 }
 
@@ -24,9 +22,15 @@ type OrderList {
 }
 
 type Query {
+
+  getOrderById(id: ID): Order
+  @rest(
+    endpoint: "https://ups-typescript-expo-default-rtdb.firebaseio.com/orders/$id.json"
+  )
  
-  getOrders: [OrderList]
+  getOrders: [OrderList] 
     @rest(
       endpoint: "https://ups-typescript-expo-default-rtdb.firebaseio.com/orders.json"
+      transforms: [{ pathpattern: [], editor: "objectToArray"}]
     )
 }
