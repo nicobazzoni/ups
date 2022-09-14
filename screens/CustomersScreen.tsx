@@ -1,5 +1,5 @@
 import { View, Text, SafeAreaView, ScrollView} from 'react-native';
-import React, { useLayoutEffect, useState } from 'react';
+import React, { useLayoutEffect, useState,  } from 'react';
 
 import { useTailwind } from 'tailwind-rn/dist';
 import { CompositeNavigationProp, useNavigation } from '@react-navigation/native';
@@ -20,6 +20,7 @@ const CustomersScreen = () => {
     const tw  = useTailwind();
     const navigation = useNavigation<CustomerScreenNavigationProp>();
     const [input, setInput] = useState<string>('');
+   
 
     useLayoutEffect(() => {
         navigation.setOptions({
